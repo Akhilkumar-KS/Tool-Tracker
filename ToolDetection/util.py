@@ -10,6 +10,7 @@ classes=[]
 df=pd.read_csv("additional\label_names.csv")
 classes=df["ToolName"]
 
+
 #Defining layer names
 layer_names=net.getLayerNames()
 output_layers=[]
