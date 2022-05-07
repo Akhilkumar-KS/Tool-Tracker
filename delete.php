@@ -1,8 +1,9 @@
 <?php
-session_start();
-$id=$_GET["id"];
-// $toolkitname=$_GET["toolkitname"];
+//session_start();
 include "connect.php";
+$id=$_GET["toolkitid"];
+// $toolkitname=$_GET["toolkitname"];
+
 $sql = "DELETE FROM tools WHERE toolkitid=$id ";
 
 

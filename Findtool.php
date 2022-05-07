@@ -112,6 +112,15 @@
         input[type=number] {
             -moz-appearance: textfield;
         }
+        .swal2-confirm{
+        background-color:#343a40!important;
+        }
+        img {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 250px;
+        }
     </style>
 </head>
 
@@ -186,23 +195,23 @@
           processData: false,
           success: function(data){
 
-
-            if (data == "done") {
-                    Swal.fire(
-                        'Success!',
-                        'Tool Founded',
-                        'success'
-                    ).then((result) => {
-                        window.location.replace("findtool.php");
-                    });
-                }
-                else {
+            if(data=='error') {
                     Swal.fire({
                         type: 'error',
                         title: 'Oops...',
                         text: 'Tool Not found'
                     });
                 }
+            else {
+                Swal.fire({
+                type: 'success',
+                title: 'Success !!',
+                html: `<h3><span id="data"></span></h3><br>`,
+                text: 'tools'
+            });
+            document.getElementById("data").innerHTML=data;
+                }
+               
 
 
             //  if(response != 0){

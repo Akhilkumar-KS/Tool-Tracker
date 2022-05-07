@@ -1,3 +1,11 @@
+<php?
+  session_start();
+    $var=$_SESSION["var"];
+    if($var!="true"){
+      header('location:login.html'); 
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +45,6 @@
 
 <body>
   
-    
   
   <!-- <nav class="navbar navbar-expand-sm navbar-dark bg-warning">
     <div class="container-fluid">
@@ -117,7 +124,7 @@ include "navbar.php"
                     <i class="fas fa-search"></i>
                     <h4>Detect Tool</h4>
                     <p>By using this option you can detect any tools.</p><br><br><br><br>
-                    <a href="Detecttool.html" class="btn btn-secondary" role="button">Click here</a>
+                    <a href="Detecttool.php" class="btn btn-secondary" role="button">Click here</a>
                   </div>
                 </div>
                 <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
@@ -125,7 +132,7 @@ include "navbar.php"
                     <i class="fas fa-search"></i>
                     <h4>Find Tool</h4>
                     <p>By using this option you find any specified tool in the tool kit.</p><br><br><br>
-                    <a href="findtool.html" class="btn btn-secondary" role="button">Click here</a>
+                    <a href="findtool.php" class="btn btn-secondary" role="button">Click here</a>
                   </div>
                 </div>
                 <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
@@ -133,7 +140,7 @@ include "navbar.php"
                     <i class="fas fa-search"></i>
                     <h4>Cross check the tool kit</h4>
                     <p>By using this option you can cross check your tool kit before going to work and also while returning from the work.</p>
-                    <a href="Crosscheck.html" class="btn btn-secondary" role="button">Click here</a>
+                    <a href="Crosscheck.php" class="btn btn-secondary" role="button">Click here</a>
                   </div>
                 </div>
               </div>

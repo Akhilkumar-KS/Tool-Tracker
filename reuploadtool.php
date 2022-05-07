@@ -1,9 +1,10 @@
 <?php
-session_start();
-include "connect.php";
+//session_start();
 include "fileupload.php";
+include "connect.php";
+
 $id=$_POST['id'];
-echo $id;
+//echo $id;
 $newtoolkitname=$_POST['toolkitname'];
 //echo $toolkitname ;
 $sql = "UPDATE toolkit SET toolkitname='$newtoolkitname' WHERE id=$id";

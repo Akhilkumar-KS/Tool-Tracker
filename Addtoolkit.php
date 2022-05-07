@@ -19,7 +19,9 @@
         body {
             height: 100vh;
         }
-
+        .swal2-confirm{
+        background-color:#343a40!important;
+        }
         nav {
             box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
             height: 50px;
@@ -173,13 +175,10 @@ include "navbar.php"
 
 
             if (data == "done") {
-                    Swal.fire(
-                        'Success!',
-                        'Toolkit added successfully '
-                      ,  data, 
-                        'success'
-                    ).then((result) => {
-                        window.location.replace("Addtoolkit.php");
+                Swal.fire({
+                        type: 'success',
+                        title: 'Success',
+                        text: 'Toolkit Added Successfully'
                     });
                 }
                 else {

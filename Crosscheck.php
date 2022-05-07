@@ -28,7 +28,9 @@
             margin-left: auto;
         }
 
-
+        .swal2-confirm{
+        background-color:#343a40!important;
+        }
 
         .form-control {
             height: 36px;
@@ -164,11 +166,118 @@
         
             
             <br>
-        <div><button type="submit" form="form" name="submit" class=" btn btn-block btn-dark">Cross Check</button> </div>
-        </div>
+        <!-- <div><button type="submit" form="form" name="submit" class=" btn btn-block btn-dark">Cross Check</button> </div> -->
+        <div><button type="button" form="form" name="submit" class=" btn btn-block btn-dark" onclick="upload()">Find Tool</button> </div>
+        
+    </div>
                 
 </body>
 
 </html>
 
+<script>
+    function upload() {
 
+
+    var fd = new FormData();
+
+    var files = $('#fileToUpload')[0].files;
+    
+    // Check file selected or not
+    if(files.length > 0 ){
+       fd.append('fileToUpload',files[0]);
+       fd.append('toolkitid',$('#toolkitid').val());
+
+       $.ajax({
+          url: 'checktools.php',
+          type: 'post',
+          data: fd,
+          contentType: false,
+          processData: false,
+          success: function(data){
+
+
+            if (data == "done") {
+                    Swal.fire(
+                        'Success!',
+                        'All tools are available',
+                        'success'
+                    ).then((result) => {
+                        window.location.replace("Crosscheck.php");
+                    });
+                }
+                else {
+                    Swal.fire({
+                // type: 'success',
+                title: 'Result :',
+                html: `<br><br><h3><span id="data"></span></h3><br>`,
+                text: 'tools'
+            });
+            document.getElementById("data").innerHTML=data;
+                }
+
+
+            //  if(response != 0){
+            //     $("#img").attr("src",response); 
+            //     $(".preview img").show(); // Display image element
+            //  }else{
+            //     alert('file not uploaded');
+            //  }
+          },
+       });
+    }else{
+       alert("Please select a file.");
+    }
+
+
+    }
+
+
+
+    $("#form").submit(function (e) {    
+
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+
+        var form = $(this);
+        var url = form.attr('action');
+
+        // var formData = new FormData();
+        // formData.append("userfile", fileInputElement.files[0]);
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(), // serializes the form's elements.
+            contentType: false,
+              processData: false,
+              enctype: 'multipart/form-data',
+            success: function (data) {
+                if (data == "done") {
+                    Swal.fire(
+                        'Success!',
+                        'Tool Founded',
+                        'success'
+                    ).then((result) => {
+                        window.location.replace("findtool.php");
+                    });
+                }
+                else {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Tool Not found'
+                    });
+                }
+            },
+            error: function (data) {
+                Swal.fire({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!'
+                });
+            }
+        });
+
+
+    });
+</script>

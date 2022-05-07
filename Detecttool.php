@@ -27,7 +27,12 @@
             width: 180px;
             margin-left: auto;
         }
-
+        img {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 250px;
+        }
 
 
         .form-control {
@@ -79,7 +84,9 @@
         .table {
             white-space: nowrap
         }
-
+        .swal2-confirm{
+            background-color:#343a40!important;
+        }
 
         .itemTable {
             border-radius: 5px;
@@ -99,6 +106,10 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+        }
+
+        .swal.fire() {
+            background-color: #343a40;
         }
 
         /* Chrome, Safari, Edge, Opera */
@@ -133,9 +144,9 @@
           <div class="form-group">
               <br>
             <!-- <button type="button" name="upload" value="upload" id="upload" class="btn btn-block btn-dark"><i class="fa fa-fw fa-upload"></i> Detect Tool</button> -->
-            <div><button type="submit" form="form" name="submit" class=" btn btn-block btn-dark">Detect Tools</button> </div>
+            <!-- <div><button type="submit" form="form" name="submit" class=" btn btn-block btn-dark">Detect Tools</button> </div> -->
 
-            <!-- <div><button type="button" form="form" name="submit" class=" btn btn-block btn-dark" onclick="upload()">Find Tool</button> </div> -->
+            <div><button type="button" form="form" name="submit" class=" btn btn-block btn-dark" onclick="upload()">Detect Tool</button> </div>
         </div>
         </form>
     </div>    
@@ -143,7 +154,7 @@
 
 </html>
 
-<!-- <script>
+<script>
     function upload() {
 
 
@@ -166,14 +177,13 @@
 
 
             if (data != null) {
-                    Swal.fire(
-                        'Success!',
-                        'Tools Founded'
-                      ,  data, 
-                        'success'
-                    ).then((result) => {
-                        window.location.replace("detecttool.php");
-                    });
+                Swal.fire({
+                // type: 'success',
+                title: 'Tools detected',
+                html: `<h3><span id="data"></span></h3><br>`,
+                text: 'tools'
+            });
+            document.getElementById("data").innerHTML=data;
                 }
                 else {
                     Swal.fire({
@@ -213,12 +223,10 @@ $.ajax({
       enctype: 'multipart/form-data',
     success: function (data) {
         if (data != null) {
-            Swal.fire(
-                'Success!',
-                'Tool Founded',
-                'success'
-            ).then((result) => {
-                window.location.replace("detecttool.php");
+            Swal.fire({
+                type: 'success',
+                title: 'Tools detected',
+                text: 'tools'
             });
         }
         else {

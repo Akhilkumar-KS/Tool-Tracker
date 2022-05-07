@@ -135,7 +135,7 @@ h1, h2, h3, h4, h5, h6 {
 /**
 * Desktop Navigation 
 */
-.navbar {
+/* .navbar {
   padding: 0;
 }
 .navbar ul {
@@ -228,11 +228,12 @@ h1, h2, h3, h4, h5, h6 {
   .navbar .dropdown .dropdown:hover > ul {
     left: -100%;
   }
-}
+}*/
 
 /**
 * Mobile Navigation 
 */
+/**
 .mobile-nav-toggle {
   color: #473d3a;
   font-size: 28px;
@@ -319,7 +320,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .navbar-mobile .dropdown > .dropdown-active {
   display: block;
-}
+} */
 
 /*--------------------------------------------------------------
 # Hero Section

@@ -42,7 +42,8 @@ if (mysqli_num_rows($result1) > 0) {
     echo '<td>'.$row["toolname"].'</td>';
     echo '<td>'.$row["num"].'</td>';
     echo '<td>';
-    echo("<a class=' btn btn- btn-secondary ' href='deletetool.php?toolid=$toolid;'>Remove</a>  ");
+    //echo("<a class=' btn btn- btn-secondary ' href='deletetool.php?toolid=$toolid;'>Remove</a>  ");
+    echo("<button class='btn btn- btn-danger' onclick='delt($toolid)'>Delete</button>");
     echo '</td>';
     echo '</tr>';
     echo '</center>';

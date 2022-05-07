@@ -15,6 +15,7 @@ if($row=mysqli_fetch_array($res))
     // $_SESSION["username"]=$username;
     // header("location:show.php");
     echo "done";
+    $_SESSION["var"]="true";
 }
 else{
     echo "error";
