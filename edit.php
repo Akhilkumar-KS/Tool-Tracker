@@ -141,10 +141,10 @@ include "navbar.php";
         <div class="container">
             <h1><B>Update Toolkit</B></h1><br> 
           <form  action="reuploadtool.php" id=form method="POST" enctype="multipart/form-data">
-          <input type="hidden" id="id" name="id" value= <?php  echo $id;//=$_GET["id"]; ?>>
+          <input type="hidden" id="id" name="id" value= "<?php  echo $id ?>">
              <div class="form-group">
                 <label for="Name">Name :</label>
-                <input type="text" class="form-control" id="toolkitname" value="<?php echo $toolkitname;?>" placeholder="Enter Toolkit name" name="toolkitname" required>
+                <input type="text" class="form-control" id="toolkitname_XXX" value="<?php echo $toolkitname;?>" placeholder="Enter Toolkit name" name="toolkitname" required>
             </div>
             
             <div class="form-group">
@@ -156,8 +156,8 @@ include "navbar.php";
                       </div>
           <div class="form-group">
              <br>
-             <div><button type="submit" form="form" name="submit" class=" btn btn-block btn-dark">Update Tools</button> </div>
-             <!-- <div><button type="button" form="form" name="submit" class=" btn btn-block btn-dark" onclick="upload()">Update Toolkit</button> </div> -->
+             <!-- <div><button type="submit" form="form" name="submit" class=" btn btn-block btn-dark">Update Tools</button> </div> -->
+             <div><button type="button" form="form" name="submit" class=" btn btn-block btn-dark" onclick="uploadXX()">Update Toolkit</button> </div>
         </div>
         </form>
     </div>    
@@ -166,7 +166,7 @@ include "navbar.php";
 </html>
 
  <script>
-    function upload() {
+    function uploadXX() {
 
 
 var fd = new FormData();
@@ -176,7 +176,7 @@ var files = $('#fileToUpload')[0].files;
 // Check file selected or not
 if(files.length > 0 ){
    fd.append('fileToUpload',files[0]);
-   fd.append('tool',$('#tool').val());
+   fd.append('toolkitname',$('#toolkitname_XXX').val());
    fd.append('id',$('#id').val());
    $.ajax({
       url: 'reuploadtool.php',
@@ -185,22 +185,33 @@ if(files.length > 0 ){
       contentType: false,
       processData: false,
       success: function(data){
+          console.log(data);
+        //   if (data == "done") {
+        //       console.log('kkkk');
+        //   }else{
+        //     console.log('kllllllllll');
+        //   }
 
-
-        if (data == "done") {
-            Swal.fire({
+        Swal.fire({
                     type: 'success',
                     title: 'success',
                     text: 'Toolkit Updated Successfully'
                 });
-            }
-            else {
-                Swal.fire({
-                    type: 'error',
-                    title: 'Oops...',
-                    text: 'Tool Not found'
-                });
-            }
+
+        // if (data == "done") {
+        //     Swal.fire({
+        //             type: 'success',
+        //             title: 'success',
+        //             text: 'Toolkit Updated Successfully'
+        //         });
+        //     }
+        //     else {
+        //         Swal.fire({
+        //             type: 'error',
+        //             title: 'Oops...',
+        //             text: 'Tool Not found'
+        //         });
+        //     }
 
 
         //  if(response != 0){

@@ -1,4 +1,6 @@
-<html>
+<?php
+include "session.php";
+?><html>
 
 <head>
 <meta charset="utf-8">

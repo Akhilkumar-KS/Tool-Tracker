@@ -1,5 +1,7 @@
-
-
+<?php
+include "session.php";
+?>
+<html>
 <head>
   <title>Edit Toolkit</title>
   <meta charset="utf-8">
@@ -82,7 +84,7 @@
 
   <?php
 include "connect.php";
-session_start();
+//session_start();
 $userid= $_SESSION["id"];
 $sql = "SELECT id,toolkitname FROM toolkit where userid=$userid";
 $result = mysqli_query($link, $sql);
@@ -105,7 +107,7 @@ if (mysqli_num_rows($result) > 0) {
       echo '</td>';
     }
     echo '<td>';
-    echo("<a class=' btn btn- btn-secondary' href='edit.php?id=$toolkitid;'>Reupload   </a>  ");
+    echo("<a class=' btn btn- btn-secondary' href='edit.php?id=$toolkitid'>Reupload   </a>  ");
     //echo("<a class=' btn btn- btn-secondary' href='delete.php?id=$toolkitid;'>Delete   </a>  ");
     echo("<button class='btn btn- btn-danger' onclick='del($toolkitid)'>Delete</button>");
     echo '</td>';
@@ -119,7 +121,7 @@ if (mysqli_num_rows($result) > 0) {
 mysqli_close($link);
 ?>
 </table></div>
-</Body>
+</body>
 </html>
 <script>
     function del(toolkitid) {
@@ -193,25 +195,33 @@ mysqli_close($link);
 
 
 }
-$("#form").submit(function (e) {
+function addtool(toolkitid) {
 
-e.preventDefault(); // avoid to execute the actual submit of the form.
+// e.preventDefault(); // avoid to execute the actual submit of the form.
 
-var form = $(this);
-var url = form.attr('action');
+// var form = $(this);
+var url = 'addmoretool.php';
+
+var fdx = new FormData();
+fdx.append('toolkitid',toolkitid);
+fdx.append('toolname',$('#toolname'+toolkitid).val());
+fdx.append('num','num'+$('#num'+toolkitid).val());
 
 $.ajax({
-    type: "GET",
+    type: "post",
     url: url,
-    data: form.serialize(), // serializes the form's elements.
+    data: fdx, // serializes the form's elements.
+    contentType: false,
+          processData: false,
     success: function (data) {
+      console.log(data);
         if (data == "done") {
             Swal.fire(
                 'Success!',
                 'Tool added successfully',
                 'success'
             ).then((result) => {
-                window.location.replace("Edittoolkit.php");
+                // window.location.replace("Edittoolkit.php");
             });
         }
         else {
@@ -232,7 +242,7 @@ $.ajax({
 });
 
 
-});
+}
 </script>  
 
 

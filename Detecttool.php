@@ -1,4 +1,6 @@
-<html>
+<?php
+include "session.php";
+?><html>
 
 <head>
 <meta charset="utf-8">
@@ -155,7 +157,7 @@
 </html>
 
 <script>
-    function upload() {
+    function upload() { 
 
 
     var fd = new FormData();
@@ -176,21 +178,21 @@
           success: function(data){
 
 
-            if (data != null) {
+            if (data =="error") {
                 Swal.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Tool Not found'
+                    });
+                }
+                else {
+            Swal.fire({
                 // type: 'success',
                 title: 'Tools detected',
                 html: `<h3><span id="data"></span></h3><br>`,
                 text: 'tools'
             });
             document.getElementById("data").innerHTML=data;
-                }
-                else {
-                    Swal.fire({
-                        type: 'error',
-                        title: 'Oops...',
-                        text: 'Tool Not found'
-                    });
                 }
 
           },

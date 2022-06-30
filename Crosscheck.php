@@ -1,4 +1,6 @@
-<html>
+<?php
+include "session.php";
+?><html>
 
 <head>
     <meta charset="utf-8">
@@ -120,7 +122,7 @@
 <body>
 
     <?php
-    session_start();
+    //session_start();
     $userid= $_SESSION["id"];
     include "navbar.php"
 
@@ -167,7 +169,7 @@
             
             <br>
         <!-- <div><button type="submit" form="form" name="submit" class=" btn btn-block btn-dark">Cross Check</button> </div> -->
-        <div><button type="button" form="form" name="submit" class=" btn btn-block btn-dark" onclick="upload()">Find Tool</button> </div>
+        <div><button type="button" form="form" name="submit" class=" btn btn-block btn-dark" onclick="upload()">Cross check</button> </div>
         
     </div>
                 

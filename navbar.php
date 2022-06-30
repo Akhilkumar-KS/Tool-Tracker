@@ -29,7 +29,7 @@ echo '<a class="nav-link" href=Findtool.php>Find Tool</a>';
 echo '</li>';
 echo '';
 echo '<li class="nav-item">';
-echo '<a class="nav-link" href="login.html">Signout</a>';
+echo '<a class="nav-link" href="signout.php">Signout</a>';
 echo '</li>';
 echo '</ul>';
 echo '';

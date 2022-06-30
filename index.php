@@ -1,9 +1,5 @@
-<php?
-  session_start();
-    $var=$_SESSION["var"];
-    if($var!="true"){
-      header('location:login.html'); 
-    }
+<?php
+include "session.php";
 ?>
 
 <!DOCTYPE html>
