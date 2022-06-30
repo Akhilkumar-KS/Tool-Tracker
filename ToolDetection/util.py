@@ -75,16 +75,20 @@ def detect(path):
         else:
             classList[key]=1
 
+    for i in range(len(boxes)):
+        if i in indexes:
+            x, y, w, h = boxes[i]
+            label = classes[class_ids[i]]  # name of the objects
+            cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 10)
+            cv2.putText(img, label, (x, y), cv2.FONT_HERSHEY_PLAIN, 5, (255, 0, 0), 10)
+
+    cv2.imwrite(path,img)
+
     return classList
 
-    # for i in range(len(boxes)):
-    #     if i in indexes:
-    #         x, y, w, h = boxes[i]
-    #         label = classes[class_ids[i]]  # name of the objects
-    #         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
-    #         cv2.putText(img, label, (x, y), cv2.FONT_HERSHEY_PLAIN, 1, (0, 0, 255), 2)
+    
 
 
-    # cv2.imshow("Output",img)
+    
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
